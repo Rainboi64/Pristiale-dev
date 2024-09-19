@@ -1,0 +1,217 @@
+body {
+  font-family: 'Playfair Display', Times, serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.deck {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+
+.deck > div {
+  background-size: auto 85%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 45vh;
+  max-width: 250px;
+  height: 85vh;
+  max-height: 400px;
+  will-change: transform;
+  border-radius: 10px;
+  box-shadow:
+    0 12.5px 100px -10px rgb(9, 21, 9),
+    0 10px 10px -10px rgba(76, 124, 93, 0.3);
+}
+
+.card {
+  background-color: #122e28;
+  box-shadow:
+    0 12.5px 100px -10px rgb(9, 21, 9),
+    0 10px 10px -10px rgba(76, 124, 93, 0.3);
+}
+
+.marquee {
+  width: 100vw;
+  line-height: 50px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marque div {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.video {
+  overflow-x: hidden;
+}
+
+.title {
+  background: 50% 100% / 50% 50% no-repeat
+    radial-gradient(
+      ellipse at bottom,
+      rgb(255, 255, 255),
+      transparent,
+      transparent
+    );
+  background-clip: text;
+  color: transparent;
+  animation:
+    reveal 3000ms ease-in-out forwards 200ms,
+    glow 2500ms linear infinite 2000ms;
+
+  @keyframes reveal {
+    80% {
+      letter-spacing: 8px;
+    }
+    100% {
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes glow {
+    40% {
+      text-shadow: 0 0 8px rgb(113, 255, 160);
+    }
+  }
+}
+
+.subtitle {
+  animation:
+    reveal 3000ms ease-in-out forwards 200ms,
+    glow 2500ms linear infinite 2000ms;
+
+  @keyframes reveal {
+    80% {
+      letter-spacing: 2px;
+    }
+    100% {
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes glow {
+    40% {
+      text-shadow: 0 0 2px rgb(113, 255, 160);
+    }
+  }
+  background-image: url(../assets/images/text-background.webp);
+  background-size: cover;
+  color: transparent;
+  background-clip: text;
+  margin: 10px;
+  font-size: x-large;
+}
+
+.textContainer {
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  font-weight: bold;
+  font-size: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.textContainer > div {
+  animation: come2life linear 10s infinite;
+  transform-origin: center center;
+  opacity: 0;
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  backface-visibility: hidden;
+  color: white;
+}
+
+.textContainer > div:nth-child(1) {
+  left: 30vw;
+  top: 30vh;
+  animation-delay: 0s;
+}
+
+.textContainer > div:nth-child(2) {
+  left: 70vw;
+  top: 30vh;
+  animation-delay: 4s;
+}
+
+.textContainer > div:nth-child(3) {
+  left: 50vw;
+  top: 50vh;
+  animation-delay: 8s;
+}
+
+.textContainer > div:nth-child(4) {
+  left: 30vw;
+  top: 70vh;
+  animation-delay: 6s;
+}
+
+.textContainer > div:nth-child(5) {
+  left: 70vw;
+  top: 70vh;
+  animation-delay: 2s;
+}
+
+@keyframes come2life {
+  0% {
+    transform: scale3d(0, 0, 1) rotate(0.02deg);
+    opacity: 0;
+    filter: blur(10px);
+    color: whitesmoke;
+  }
+  25% {
+    transform: scale3d(1, 1, 1) rotate(0.02deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  40% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale3d(4, 4, 1) rotate(0.02deg);
+    filter: blur(10px);
+  }
+}
