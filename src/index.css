@@ -6,6 +6,16 @@
   font-family: Helvetica, sans-serif;
 }
 
+.playfair {
+  font-family: 'Playfair Display', Times, serif;
+}
+
+body {
+  font-family: 'Playfair Display', Times, serif;
+  color: white;
+  overflow-x: hidden;
+}
+
 .bebas-neue-regular {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
@@ -14,6 +24,13 @@
 
 .playfair-display {
   font-family: 'Playfair Display', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.alexandria {
+  font-family: 'Alexandria', system-ui;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;

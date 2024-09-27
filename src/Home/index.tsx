@@ -3,25 +3,10 @@ import styles from './Home.module.scss';
 import logo from '../assets/images/pristiale.svg';
 import augustus from '../assets/videos/augustus.mp4';
 import { Button } from '@/components/ui/button.tsx';
-
-import theOriginalVideo from '@/assets/images/classics/the-original/preview.mp4';
-import theOriginalThumbnail from '@/assets/images/classics/the-original/thumbnail.png';
-
-import tailoredPantsVideo from '@/assets/images/classics/tailored-pants/preview.mp4';
-import tailoredPantsThumbnail from '@/assets/images/classics/tailored-pants/thumbnail.jpeg';
-
-import poloSweaterThumbnail from '@/assets/images/classics/polo-sweater/thumbnail.png';
-import poloSweaterVideo from '@/assets/images/classics/polo-sweater/preview.mp4';
-
-import GalleryItem from './GalleryItem.tsx';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel.tsx';
-import Autoplay from 'embla-carousel-autoplay';
-import React from 'react';
 import { renderer, animate } from './background.ts';
+import { Link } from 'react-router-dom';
+import Essentials from './Essentials.tsx';
+import NavigationBar from '@/components/NavigationBar/NavigationBar.tsx';
 
 var intervalRewind: NodeJS.Timeout;
 export default function App() {
@@ -53,10 +38,6 @@ export default function App() {
     }
   }, [iframeOpacity]);
 
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }),
-  );
-
   return (
     <>
       <div className="flex flex-col items-center">
@@ -71,7 +52,7 @@ export default function App() {
                 transition: 'opacity 0.3s ease',
               }}
             />
-            <div className="m-[auto] flex max-w-[50%] flex-col items-center justify-center">
+            <div className="alexandria m-[auto] flex max-w-[50%] flex-col items-center justify-center text-[700%]">
               <img
                 alt="pristiale logo"
                 src={logo}
@@ -82,59 +63,9 @@ export default function App() {
           </>
         </div>
 
-        <div className="mb-12 flex w-screen flex-col items-center justify-evenly gap-4 bg-white p-4">
-          <p className="bebas-neue-regular text-center text-6xl text-background">
-            Men's Essentials Collection
-          </p>
-          <p className="bebas-neue-regular text-center text-2xl text-background">
-            Clean, Elegant, and Ambitious. Timeless Essentials Redefined by
-            Pristiale
-          </p>
-          <Carousel
-            className="gap-2 p-2"
-            opts={{
-              align: 'center',
-              loop: true,
-            }}
-            plugins={[plugin.current]}
-          >
-            <CarouselContent>
-              {Array.from(new Array(3)).map(() => (
-                <>
-                  <CarouselItem className="flex justify-center md:basis-1/5">
-                    <GalleryItem
-                      video={theOriginalVideo}
-                      thumbnail={theOriginalThumbnail}
-                      title={'The Original'}
-                      subTitle={
-                        '100% natural cotton, anything but a normal t-shirt.'
-                      }
-                      price={'410,000 SYP'}
-                    />
-                  </CarouselItem>
-                  <CarouselItem className="flex justify-center md:basis-1/5">
-                    <GalleryItem
-                      video={tailoredPantsVideo}
-                      thumbnail={tailoredPantsThumbnail}
-                      title={'Serpent Trousers'}
-                      subTitle={'100% Lenin Pleated Trousers'}
-                      price={'902,000 SYP'}
-                    />
-                  </CarouselItem>
-                  <CarouselItem className="flex justify-center md:basis-1/5">
-                    <GalleryItem
-                      video={poloSweaterVideo}
-                      thumbnail={poloSweaterThumbnail}
-                      title={'Cashmere Polo Sweater'}
-                      subTitle={'100% Cashmere Polo Zipper Sweater'}
-                      price={'1,200,500 SYP'}
-                    />
-                  </CarouselItem>
-                </>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
+        <NavigationBar />
+        <Essentials />
+
         <div className="flex w-screen flex-1 flex-row flex-wrap justify-evenly py-12">
           <video
             src={augustus}
@@ -194,13 +125,17 @@ export default function App() {
             commands attention and inspires others.
           </p>
           <div className="flex w-screen flex-col items-center justify-center bg-white p-8">
-            <Button variant="link" className="text-green text-2xl text-black">
-              Foretell and order now.
-            </Button>
+            <Link to="/test">
+              <Button variant="link" className="text-green text-2xl text-black">
+                Personalize a perfume.
+              </Button>
+            </Link>
             <p className="text-black">or</p>
-            <Button variant="link" className="text-green text-2xl text-black">
-              Buy as a gift.
-            </Button>
+            <Link to="/login">
+              <Button variant="link" className="text-green text-2xl text-black">
+                Buy as a gift.
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="flex flex-row">

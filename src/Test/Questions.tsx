@@ -68,7 +68,7 @@ export const emperorWeights = {
 
 export const questions = [
   {
-    question: 'Hello?',
+    question: 'How would you describe your personality?',
     answers: [
       'Visionary and powerful',
       'Courageous and fearless',
