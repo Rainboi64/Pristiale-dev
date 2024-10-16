@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import HoverVideoPlayer from 'react-hover-video-player';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
-
 import { Tables } from '@/lib/database.types';
 import formatPrice from '@/utils/formatPrice';
 import ItemDrawer from './ItemDrawer';
+import { cn } from '@/lib/utils';
 
-function GalleryItem(props: { product: Tables<'products'> }) {
+function GalleryItem(props: { product: Tables<'products'>; variant?: 'big' }) {
   const { product } = props;
   const [focused, setFocused] = useState(false);
 
@@ -20,7 +20,7 @@ function GalleryItem(props: { product: Tables<'products'> }) {
           <HoverVideoPlayer
             muted
             unselectable="on"
-            className="overflow-clip rounded-xl"
+            className={cn('aspect-[1/1.414] overflow-clip rounded-xl')}
             focused={focused}
             onHoverStart={() => setFocused(true)}
             onHoverEnd={() => setFocused(false)}
@@ -32,12 +32,9 @@ function GalleryItem(props: { product: Tables<'products'> }) {
                 alt="thumbnail"
                 style={{
                   width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
                 }}
               />
             }
-            videoClassName="h-[400px]"
             hoverOverlay={
               <div className="flex h-full w-full flex-col items-center justify-end p-12">
                 <p className="bebas-neue-regular text-center text-2xl shadow-inner">

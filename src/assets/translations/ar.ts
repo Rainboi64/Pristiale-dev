@@ -20,6 +20,14 @@ export const ar = {
       newSeasonSubtitle: 'أحدث القطع المصممة لموسم جديد من بريستيال',
       allItems: 'كل القطع',
       allItemsSubtitle: 'تصفح متجر بريستيال لانتقاء القطع العصرية',
+      typeToSearch: 'ابدا بالكتابة ليتم البحث',
+      items: 'قطع',
+      switchLanguage: 'تبديل اللغة',
+      profile: 'الحساب',
+      billing: 'الدفع',
+      settings: 'الاعدادات',
+      noResults: 'لا شيئ هنا',
+      allProducts: 'جميع القطع',
     },
     collections: {
       mensEssentials: 'تشكيلة الأساسيات الرجالية',
@@ -65,6 +73,11 @@ export const ar = {
         'حدثت مشكلة في الاتصال بالخادم. الرجاء المحاولة لاحقًا.',
       orderError: 'خطأ في الطلب',
       orderErrorDesc: 'حدثت مشكلة أثناء معالجة طلبك. الرجاء المحاولة مرة أخرى.',
+    },
+    products: {
+      clickToPreview: 'اضغط للتصفح',
+      addToCart: 'اضف للسلة',
+      size: 'القياس',
     },
   },
 };

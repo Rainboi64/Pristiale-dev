@@ -14,13 +14,12 @@ import styles from '../../Home/Home.module.scss';
 import { AvatarIcon, BackpackIcon } from '@radix-ui/react-icons';
 import { Button } from '../ui/button';
 import { Sheet, SheetTrigger } from '../ui/sheet';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartSheet from './CartSheet';
 import supabase from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
 import { useTranslation } from 'react-i18next';
-import { LanguagesIcon } from 'lucide-react';
-import i18next from 'i18next';
+import { CommandMenu } from '../CommandMenu';
 
 const components: { title: string; description: string }[] = [
   {
@@ -108,6 +107,8 @@ export default function NavigationBar() {
     fetchData();
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div
       className={cn(
@@ -134,13 +135,16 @@ export default function NavigationBar() {
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/" title={t('menu.essentialsCollection')}>
+                  <ListItem
+                    href="/products"
+                    title={t('menu.essentialsCollection')}
+                  >
                     {t('menu.essentialsCollectionSubtitle')}
                   </ListItem>
-                  <ListItem href="/" title={t('menu.newSeason')}>
+                  <ListItem href="/products" title={t('menu.newSeason')}>
                     {t('menu.newSeasonSubtitle')}
                   </ListItem>
-                  <ListItem href="/" title={t('menu.allItems')}>
+                  <ListItem href="/products" title={t('menu.allItems')}>
                     {t('menu.allItemsSubtitle')}
                   </ListItem>
                 </ul>
@@ -203,6 +207,9 @@ export default function NavigationBar() {
           alt="pristiale logo"
           className="max-sm:hidden"
           src={logo}
+          onClick={() => {
+            navigate('/');
+          }}
         />
       </div>
       <div className="flex flex-1 items-center  justify-center ">
@@ -223,20 +230,8 @@ export default function NavigationBar() {
             </Button>
           </Link>
         )}
-        <Button
-          variant={'ghost'}
-          onClick={
-            language === 'en'
-              ? () => {
-                  i18next.changeLanguage('ar');
-                }
-              : () => {
-                  i18next.changeLanguage('en');
-                }
-          }
-        >
-          <LanguagesIcon className="p-1" />
-        </Button>
+
+        <CommandMenu />
       </div>
     </div>
   );

@@ -7,43 +7,60 @@ import SignUpForm from './components/signup-form';
 import Checkout from './components/Checkout/checkout';
 import ThankYou from './components/Checkout/thank-you';
 import './i18n';
-import Products from './Products/Index';
+import Products from './products/Products';
+import ErrorPage from './errorPage';
+import ProductPage from './components/Product/ProductPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/test',
     element: <Test />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/login',
     element: <LoginForm />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/signup',
     element: <SignUpForm />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/checkout',
     element: <Checkout />,
-  },
-  {
-    path: '/products',
-    element: <Products />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/thank-you',
     element: <ThankYou />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/products',
+    element: <Products />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/product/:productId',
+    element: <ProductPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
 const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
+      <RouterProvider
+        fallbackElement={<h1>Seems like something broke.</h1>}
+        router={router}
+      />
     </ThemeProvider>
   );
 };

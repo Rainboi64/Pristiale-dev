@@ -22,6 +22,14 @@ export const en = {
         'Newest peices designed for the new season by pristiale.',
       allItems: 'All Items',
       allItemsSubtitle: "Browse pristiale's store for desginer goods.",
+      typeToSearch: 'Start typing to search',
+      items: 'Items',
+      switchLanguage: 'Switch Language',
+      profile: 'Profile',
+      billing: 'Billing',
+      settings: 'Settings',
+      noResults: 'No results.',
+      allProducts: 'All Desinger Products',
     },
     collections: {
       mensEssentials: "Men's Essentials Collection",
@@ -69,6 +77,11 @@ export const en = {
       orderError: 'Order Error',
       orderErrorDesc:
         'There was an issue processing your order. Please try again.',
+    },
+    products: {
+      clickToPreview: 'Click to preview',
+      addToCart: 'Add To Cart',
+      size: 'Size'
     },
   },
 };
