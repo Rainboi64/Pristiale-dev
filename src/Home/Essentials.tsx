@@ -5,9 +5,11 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel.tsx';
 import { Tables } from '@/lib/database.types.ts';
+import { cn } from '@/lib/utils.ts';
 import supabase from '@/utils/supabase.ts';
 import Autoplay from 'embla-carousel-autoplay';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Essentials() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
@@ -39,14 +41,20 @@ export default function Essentials() {
     setProducts(copy);
   }
 
+  const [t, { language }] = useTranslation();
+
   return (
-    <div className="mb-12 flex w-screen flex-col items-center justify-evenly gap-4 bg-white p-4">
-      <p className="bebas-neue-regular text-center text-6xl text-background">
-        Men's Essentials Collection
+    <div
+      className={cn(
+        'mb-12 flex w-screen flex-col items-center justify-evenly gap-4 bg-white p-4',
+        language === 'en' ? 'bebas-neue-regular' : 'alexandria',
+      )}
+    >
+      <p className={cn('text-center text-6xl text-background')}>
+        {t('collections.mensEssentials')}
       </p>
-      <p className="bebas-neue-regular text-center text-2xl text-background">
-        Clean, Elegant, and Ambitious. Timeless Essentials Redefined by
-        Pristiale
+      <p className="text-center text-xl text-background">
+        {t('collections.mensEssentialsDescription')}
       </p>
       <Carousel
         className="gap-2 p-2"

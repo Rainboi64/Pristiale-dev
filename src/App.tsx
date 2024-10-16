@@ -6,6 +6,8 @@ import { LoginForm } from './components/login-form';
 import SignUpForm from './components/signup-form';
 import Checkout from './components/Checkout/checkout';
 import ThankYou from './components/Checkout/thank-you';
+import './i18n';
+import Products from './Products/Index';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/checkout',
     element: <Checkout />,
+  },
+  {
+    path: '/products',
+    element: <Products />,
   },
   {
     path: '/thank-you',

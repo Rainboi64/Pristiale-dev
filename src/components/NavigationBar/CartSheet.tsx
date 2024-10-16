@@ -13,6 +13,7 @@ import { Tables } from '@/lib/database.types';
 import CartItem from './CartItem';
 import formatPrice from '@/utils/formatPrice';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function CartSheet() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -47,13 +48,16 @@ export default function CartSheet() {
 
     setItems(data);
   }
+
+  const { t } = useTranslation();
+
   return (
     <SheetContent
       className="helvetica flex min-h-full w-screen flex-col"
       onFocus={getItems}
     >
       <SheetHeader>
-        <SheetTitle>Your Cart</SheetTitle>
+        <SheetTitle>{t('cart.yourCart')}</SheetTitle>
       </SheetHeader>
 
       {loggedIn ? (
@@ -69,7 +73,7 @@ export default function CartSheet() {
             <Separator />
             <div className="flex items-center justify-between p-3">
               <div className="bebas-neue-regular text-2xl font-medium leading-none text-foreground">
-                Total
+                {t('cart.total')}
               </div>
               <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                 {formatPrice(sumBy(items, (item) => item.price))}
@@ -80,7 +84,7 @@ export default function CartSheet() {
               disabled={!items.length}
               onClick={() => navigate('/checkout')}
             >
-              Continue to checkout
+              {t('cart.continueToCheckout')}
             </Button>
           </div>
         </>

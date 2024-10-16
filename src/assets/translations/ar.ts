@@ -1,0 +1,70 @@
+export const ar = {
+  translation: {
+    common: {
+      copyright:
+        'إشعار حقوق الطبع والنشر © 2024 بريستيال. جميع الحقوق محفوظة. جميع المحتويات، بما في ذلك على سبيل المثال لا الحصر النصوص والرسوم والشعارات والصور والتصميمات، هي ملك لشركة بريستيال والعلامات التجارية التابعة لها. يحظر تمامًا أي نسخ أو توزيع أو استخدام للمواد دون الحصول على إذن كتابي صريح من بريستيال. قد يؤدي الاستخدام غير المصرح به إلى اتخاذ إجراءات قانونية. للاستفسارات حول الأذونات أو الترخيص، يرجى التواصل مع فريقنا عبر البريد الإلكتروني: legal@pristiale.com.',
+      limitedPieces: 'قطع محدودة',
+      orderNow: 'احجز اللان',
+      personalizeAPerfume: 'انشئ عطرك الخاص',
+      or: 'او',
+      buyAsAGift: 'اشتري كهدية',
+    },
+    menu: {
+      takeATest: 'اجر الاختبار',
+      personalizeAPerfume: 'انشئ عطرك الخاص',
+      collections: 'تشكيلات',
+      perfumes: 'عطور',
+      essentialsCollection: 'تشكيلة الأساسيات',
+      essentialsCollectionSubtitle: 'اساسيات عملية, معاد تعريفها من بريستيال',
+      newSeason: 'الموسم الجديد',
+      newSeasonSubtitle: 'أحدث القطع المصممة لموسم جديد من بريستيال',
+      allItems: 'كل القطع',
+      allItemsSubtitle: 'تصفح متجر بريستيال لانتقاء القطع العصرية',
+    },
+    collections: {
+      mensEssentials: 'تشكيلة الأساسيات الرجالية',
+      mensEssentialsDescription:
+        'نظافة، أناقة، وطموح. أساسيات عملية معاد تعريفها من بريستيال',
+      genesisCollection: 'البدايات',
+      genesisCollectionDescription:
+        'مستوحاة من أغسطس، مؤسس الإمبراطورية الرومانية وأول إمبراطور لها. يمثل أغسطس القيادة والرؤية والدافع لبناء شيء عظيم. هذا العطر مخصص للقائد الطبيعي الذي يجذب الانتباه ويلهم الآخرين.',
+    },
+    perfumes: {
+      augustus: 'أغوستوس',
+      sage: 'الشيح',
+      juniper: 'العرعر',
+      cedarwood: 'خشب الأرز',
+      amber: 'العنبر',
+      incense: 'البخور',
+    },
+    cart: {
+      yourCart: 'Your Cart',
+      total: 'Total',
+      continueToCheckout: 'Continue to checkout',
+    },
+    checkout: {
+      cart: 'عربة التسوق',
+      checkout: 'الدفع',
+      contactUs: 'اتصل بنا',
+      contactUsDesc: 'إذا كانت لديك أي استفسارات، لا تتردد في الاتصال بنا.',
+      goToContactPage: 'انتقل إلى صفحة الاتصال',
+      billingDelivery: 'الفوترة والتسليم',
+      billingDeliveryDesc: 'يرجى تقديم معلومات تسليم دقيقة.',
+      shipTo: 'الشحن إلى',
+      governorate: 'اختر المحافظة',
+      shippingInfo: 'معلومات الشحن',
+      shippingInfoPlaceholder: 'أدخل عنوان الشحن الخاص بك',
+      phone: 'رقم الهاتف',
+      phonePlaceholder: 'أدخل رقم هاتفك',
+      additionalOptions: 'خيارات توصيل إضافية',
+      additionalOptionsPlaceholder: 'أي تعليمات خاصة للتوصيل؟',
+      agreeTerms: 'أوافق على الشروط والأحكام',
+      placeOrder: 'إتمام الطلب',
+      connectionError: 'خطأ في الاتصال',
+      connectionErrorDesc:
+        'حدثت مشكلة في الاتصال بالخادم. الرجاء المحاولة لاحقًا.',
+      orderError: 'خطأ في الطلب',
+      orderErrorDesc: 'حدثت مشكلة أثناء معالجة طلبك. الرجاء المحاولة مرة أخرى.',
+    },
+  },
+};

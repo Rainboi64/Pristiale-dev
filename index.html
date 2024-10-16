@@ -3,13 +3,27 @@
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CQREE412Y"></script>
     <script>
+      document.addEventListener('gesturestart', function (e) {
+          e.preventDefault();
+      });
+
       window.dataLayer = window.dataLayer || [];
+
+      document.querySelectorAll('video').forEach(x => {
+        x.addEventListener("contextmenu", function (e) { e.preventDefault(); e.stopPropagation(); }, false);
+        if (myVideo.hasAttribute("controls")) {
+            myVideo.removeAttribute("controls")   
+        }
+      });
+
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-2CQREE412Y');
     </script>
+
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="src/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="src/assets/images/favicon/favicon-32x32.png">
@@ -23,6 +37,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>

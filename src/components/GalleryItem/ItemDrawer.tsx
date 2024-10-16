@@ -90,8 +90,10 @@ export default function ItemDrawer(props: { product: Tables<'products'> }) {
             muted
             autoPlay
             loop
+            playsInline
             poster={product.thumbnail ?? ''}
             unselectable={'on'}
+            controls={false}
             disablePictureInPicture={true}
             //@ts-expect-error
             onPointerDown={(event) => event.target.pause()}

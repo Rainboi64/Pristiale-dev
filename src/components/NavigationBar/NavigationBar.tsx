@@ -18,6 +18,9 @@ import { Link } from 'react-router-dom';
 import CartSheet from './CartSheet';
 import supabase from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
+import { useTranslation } from 'react-i18next';
+import { LanguagesIcon } from 'lucide-react';
+import i18next from 'i18next';
 
 const components: { title: string; description: string }[] = [
   {
@@ -52,7 +55,41 @@ const components: { title: string; description: string }[] = [
   },
 ];
 
+const arComponents: { title: string; description: string }[] = [
+  {
+    title: 'أوريليوس',
+    description:
+      'مستوحى من ماركوس أوريليوس، الملك الفيلسوف المعروف بحكمته وهدوئه الرزين. أوريليوس هو عطر يجسد التأمل الهادئ والقوة الداخلية، مثالي لأولئك الذين يسعون لتحقيق التوازن والوضوح في الحياة.',
+  },
+  {
+    title: 'كاليغولا',
+    description:
+      'سُمي على اسم كاليغولا، الإمبراطور المثير للجدل المعروف بسلوكه المتقلب وجرأته. هذا العطر مخصص لأولئك الذين يحتضنون جانبهم الجامح ولا يخشون التميز، وهو عطر يتحدى الأعراف ويتجاوز التوقعات.',
+  },
+  {
+    title: 'أغسطس',
+    description:
+      'مستوحى من أغسطس، مؤسس الإمبراطورية الرومانية وأول إمبراطور لها. يمثل أغسطس القيادة والرؤية والدافع لبناء شيء عظيم. هذا العطر مخصص للقائد الطبيعي الذي يجذب الانتباه ويلهم الآخرين.',
+  },
+  {
+    title: 'ليفيا',
+    description:
+      'مستوحى من ليفيا دروسيلا، زوجة أغسطس وإحدى أقوى النساء في التاريخ الروماني. ليفيا معروفة بأناقتها وذكائها وتأثيرها الخفي على السياسة الرومانية.',
+  },
+  {
+    title: 'ثيودورا',
+    description:
+      'سُمي على اسم ثيودورا، الإمبراطورة البيزنطية التي ارتقت من أصول متواضعة لتصبح واحدة من أقوى النساء في الإمبراطورية. ثيودورا معروفة بذكائها وجاذبيتها وإصرارها. هذا العطر مخصص لأولئك الذين يملكون العزيمة ولا يخشون ترك بصمتهم على العالم.',
+  },
+  {
+    title: 'هيلينا',
+    description:
+      'مستوحى من هيلينا، والدة قسطنطين الكبير وشخصية بارزة في المسيحية المبكرة. هيلينا معروفة بتقواها وتعاطفها وحكمتها. هذا العطر مخصص لأولئك الذين يقدرون الروحانية واللطف، ويجسد شعورًا عميقًا بالسلام الداخلي.',
+  },
+];
 export default function NavigationBar() {
+  const [t, { language }] = useTranslation();
+
   const [user, setUser] = useState<User>();
   const fetchData = async () => {
     const response = await supabase.auth.getUser();
@@ -72,12 +109,19 @@ export default function NavigationBar() {
   }, []);
 
   return (
-    <div className="helvetica sticky top-0 z-10 flex w-screen bg-black p-2">
+    <div
+      className={cn(
+        'helvetica sticky top-0 z-10 flex w-screen bg-black p-2',
+        language === 'en' ? 'helvetica' : 'tajawal-medium',
+      )}
+    >
       <div className="flex flex-1  items-center justify-center">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
+              <NavigationMenuTrigger>
+                {t('menu.collections')}
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[350px] gap-3 p-4 md:w-[500px] lg:w-[600px] lg:grid-cols-[.35fr_1fr]">
                   <li className="row-span-3">
@@ -90,20 +134,22 @@ export default function NavigationBar() {
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/" title="Essentials Collection">
-                    Timeless classics, reintroduced by pristiale.
+                  <ListItem href="/" title={t('menu.essentialsCollection')}>
+                    {t('menu.essentialsCollectionSubtitle')}
                   </ListItem>
-                  <ListItem href="/" title="New Season">
-                    Newest peices designed for the new season by pristiale.
+                  <ListItem href="/" title={t('menu.newSeason')}>
+                    {t('menu.newSeasonSubtitle')}
                   </ListItem>
-                  <ListItem href="/" title="All Items">
-                    Browse pristiale's store for desginer goods.
+                  <ListItem href="/" title={t('menu.allItems')}>
+                    {t('menu.allItemsSubtitle')}
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Perfumes</NavigationMenuTrigger>
+              <NavigationMenuTrigger>
+                {t('menu.perfumes')}
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[350px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] lg:grid-cols-[.75fr_1fr] ">
                   <li className="overflow-hidden lg:col-span-2 ">
@@ -112,26 +158,38 @@ export default function NavigationBar() {
                         className=" flex w-full select-none flex-col items-center justify-end rounded-md p-6 no-underline outline-none hover:bg-accent"
                         href="/"
                       >
-                        <p className="alexandria line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          اجر الاختبار
+                        <p
+                          className={cn(
+                            'line-clamp-2 text-sm leading-snug text-muted-foreground',
+                            language === 'ar'
+                              ? 'alexandria'
+                              : 'bebas-neue-regular',
+                          )}
+                        >
+                          {t('menu.takeATest')}
                         </p>
                         <p
                           className={cn(
                             styles.title,
-                            'alexandria text-nowrap text-2xl',
+                            'text-nowrap text-2xl',
+                            language === 'ar'
+                              ? 'alexandria'
+                              : 'bebas-neue-regular',
                           )}
                         >
-                          انشئ العطر الخاص بك
+                          {t('menu.personalizeAPerfume')}
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
 
-                  {components.map((component) => (
-                    <ListItem key={component.title} title={component.title}>
-                      {component.description}
-                    </ListItem>
-                  ))}
+                  {(language === 'ar' ? arComponents : components).map(
+                    (component) => (
+                      <ListItem key={component.title} title={component.title}>
+                        {component.description}
+                      </ListItem>
+                    ),
+                  )}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -165,6 +223,20 @@ export default function NavigationBar() {
             </Button>
           </Link>
         )}
+        <Button
+          variant={'ghost'}
+          onClick={
+            language === 'en'
+              ? () => {
+                  i18next.changeLanguage('ar');
+                }
+              : () => {
+                  i18next.changeLanguage('en');
+                }
+          }
+        >
+          <LanguagesIcon className="p-1" />
+        </Button>
       </div>
     </div>
   );

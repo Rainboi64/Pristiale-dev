@@ -7,6 +7,8 @@ import { renderer, animate } from './background.ts';
 import { Link } from 'react-router-dom';
 import Essentials from './Essentials.tsx';
 import NavigationBar from '@/components/NavigationBar/NavigationBar.tsx';
+import { useTranslation } from 'react-i18next';
+import { cn } from '@/lib/utils.ts';
 
 var intervalRewind: NodeJS.Timeout;
 export default function App() {
@@ -38,6 +40,8 @@ export default function App() {
     }
   }, [iframeOpacity]);
 
+  const [t, { language }] = useTranslation();
+
   return (
     <>
       <div className="flex flex-col items-center">
@@ -68,9 +72,13 @@ export default function App() {
 
         <div className="flex w-screen flex-1 flex-row flex-wrap justify-evenly py-12">
           <video
+            controls={false}
             src={augustus}
             muted
-            className="h-[60vh] max-w-[750px] content-center overflow-x-hidden text-white"
+            playsInline
+            className={
+              'h-[60vh] max-w-[750px] content-center overflow-x-hidden text-white'
+            }
             style={{
               transition: 'transform 0.1s ease',
               cursor: 'pointer',
@@ -93,13 +101,21 @@ export default function App() {
               }, 30);
             }}
           />
-          <div className="flex flex-col items-center justify-center">
-            <p className={styles.title + ' text-[75px] lg:text-[115px]'}>
-              Augustus
+          <div className={cn('flex flex-col items-center justify-center')}>
+            <p
+              className={cn(
+                styles.title,
+                ' text-[75px] lg:text-[115px]',
+                language === 'ar' ? 'alexandria' : '',
+              )}
+            >
+              {t('perfumes.augustus')}
             </p>
-            <p className={styles.subtitle}>limited pieces</p>
+            <p className={styles.subtitle}>{t('common.limitedPieces')}</p>
 
-            <p className="items-center pt-4 text-justify">ORDER NOW</p>
+            <p className="items-center pt-4 text-justify">
+              {t('common.orderNow')}
+            </p>
             <div className="flex flex-row items-center gap-1">
               <Button variant="link">30ML</Button>/
               <Button variant="link">50ML</Button>/
@@ -108,9 +124,14 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-4">
+        <div
+          className={cn(
+            'flex flex-col items-center gap-4',
+            language === 'ar' ? 'kufam' : '',
+          )}
+        >
           <p style={{ fontSize: 50, textAlign: 'center' }}>
-            THE GENISIS COLLECTION
+            {t('collections.genesisCollection')}
           </p>
           <p
             style={{
@@ -119,44 +140,48 @@ export default function App() {
               maxWidth: '50%',
             }}
           >
-            Inspired by Augustus, the founder of the Roman Empire and its first
-            emperor. Augustus represents leadership, vision, and the drive to
-            build something great. This scent is for the natural leader who
-            commands attention and inspires others.
+            {t('collections.genesisCollectionDescription')}
           </p>
-          <div className="flex w-screen flex-col items-center justify-center bg-white p-8">
+          <div
+            className={
+              'flex w-screen flex-col items-center justify-center bg-white p-8'
+            }
+          >
             <Link to="/test">
               <Button variant="link" className="text-green text-2xl text-black">
-                Personalize a perfume.
+                {t('common.personalizeAPerfume')}
               </Button>
             </Link>
-            <p className="text-black">or</p>
+            <p className="text-black">{t('common.or')}</p>
             <Link to="/login">
               <Button variant="link" className="text-green text-2xl text-black">
-                Buy as a gift.
+                {t('common.buyAsAGift')}
               </Button>
             </Link>
           </div>
         </div>
         <div className="flex flex-row">
           <div className={styles.textContainer}>
-            <div>SAGE</div>
-            <div>JUNIPER</div>
-            <div>CEDARWOOD</div>
-            <div>AMBER</div>
-            <div>INCENSE</div>
+            <div>{t('perfumes.sage')}</div>
+            <div>{t('perfumes.juniper')}</div>
+            <div>{t('perfumes.cedarwood')}</div>
+            <div>{t('perfumes.amber')}</div>
+            <div>{t('perfumes.incense')}</div>
           </div>
         </div>
-        <div className="flex w-screen flex-col items-center justify-center bg-white p-8">
-          <p className="max-w-[50vw] text-center font-mono text-sm text-black">
-            Copyright Notice © 2024 Pristiale All rights reserved. All content,
-            including but not limited to text, graphics, logos, images, and
-            designs, is the property of Pristiale and its affiliated brands. Any
-            reproduction, distribution, or use of the materials without express
-            written permission from Pristiale is strictly prohibited.
-            Unauthorized use may result in legal action. For inquiries regarding
-            permissions or licensing, please contact our team at
-            legal@pristiale.com
+
+        <div
+          className={cn(
+            'flex w-screen flex-col items-center justify-center bg-white p-8',
+          )}
+        >
+          <p
+            className={cn(
+              'max-w-[50vw] text-center text-sm text-black',
+              language === 'ar' ? 'tajawal-regular' : 'font-mono',
+            )}
+          >
+            {t('common.copyright')}
           </p>
         </div>
       </div>

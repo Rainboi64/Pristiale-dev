@@ -25,6 +25,7 @@ function GalleryItem(props: { product: Tables<'products'> }) {
             onHoverStart={() => setFocused(true)}
             onHoverEnd={() => setFocused(false)}
             videoSrc={product.preview ?? ''}
+            controls={false}
             pausedOverlay={
               <img
                 src={product.thumbnail ?? ''}
